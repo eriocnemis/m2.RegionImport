@@ -1,0 +1,79 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Eriocnemis, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <!-- preference -->
+    <preference for="Eriocnemis\RegionImport\Api\GetRegionIdInterface" type="Eriocnemis\RegionImport\Model\ResourceModel\GetRegionId"/>
+    <preference for="Eriocnemis\RegionImport\Api\SaveRegionInterface" type="Eriocnemis\RegionImport\Model\ResourceModel\SaveRegion"/>
+    <preference for="Eriocnemis\RegionImport\Api\SaveLabelInterface" type="Eriocnemis\RegionImport\Model\ResourceModel\SaveLabel"/>
+    <preference for="Eriocnemis\RegionImport\Api\DeleteLabelInterface" type="Eriocnemis\RegionImport\Model\ResourceModel\DeleteLabel"/>
+    <preference for="Eriocnemis\RegionImport\Api\DeleteRegionInterface" type="Eriocnemis\RegionImport\Model\ResourceModel\DeleteRegion"/>
+    <preference for="Eriocnemis\RegionImport\Model\ImportResultInterface" type="Eriocnemis\RegionImport\Model\ImportResult"/>
+    <!-- validator configuration -->
+    <virtualType name="EriocnemisRegionImportAppendValidator" type="Eriocnemis\RegionImport\Model\Validator">
+        <arguments>
+            <argument name="validators" xsi:type="array">
+                <item name="country" xsi:type="object">Eriocnemis\RegionImport\Model\Validator\CountryValidator</item>
+                <item name="code" xsi:type="object">Eriocnemis\RegionImport\Model\Validator\CodeValidator</item>
+                <item name="locale" xsi:type="object">Eriocnemis\RegionImport\Model\Validator\LocaleValidator</item>
+                <item name="name" xsi:type="object">Eriocnemis\RegionImport\Model\Validator\NameValidator</item>
+                <item name="status" xsi:type="object">Eriocnemis\RegionImport\Model\Validator\StatusValidator</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="EriocnemisRegionImportDeleteValidator" type="Eriocnemis\RegionImport\Model\Validator">
+        <arguments>
+            <argument name="validators" xsi:type="array">
+                <item name="country" xsi:type="object">Eriocnemis\RegionImport\Model\Validator\CountryValidator</item>
+                <item name="code" xsi:type="object">Eriocnemis\RegionImport\Model\Validator\CodeValidator</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="EriocnemisRegionImportReplaceValidator" type="Eriocnemis\RegionImport\Model\Validator">
+        <arguments>
+            <argument name="validators" xsi:type="array">
+                <item name="country" xsi:type="object">Eriocnemis\RegionImport\Model\Validator\CountryValidator</item>
+                <item name="code" xsi:type="object">Eriocnemis\RegionImport\Model\Validator\CodeValidator</item>
+                <item name="locale" xsi:type="object">Eriocnemis\RegionImport\Model\Validator\LocaleValidator</item>
+                <item name="name" xsi:type="object">Eriocnemis\RegionImport\Model\Validator\NameValidator</item>
+                <item name="status" xsi:type="object">Eriocnemis\RegionImport\Model\Validator\StatusValidator</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="EriocnemisRegionImportValidatorPool" type="Eriocnemis\RegionImport\Model\ValidatorPool">
+        <arguments>
+            <argument name="validators" xsi:type="array">
+                <item name="append" xsi:type="object">EriocnemisRegionImportAppendValidator</item>
+                <item name="delete" xsi:type="object">EriocnemisRegionImportDeleteValidator</item>
+                <item name="replace" xsi:type="object">EriocnemisRegionImportReplaceValidator</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="EriocnemisRegionImportHandlerPool" type="Eriocnemis\RegionImport\Model\HandlerPool">
+        <arguments>
+            <argument name="handlers" xsi:type="array">
+                <item name="append" xsi:type="object">Eriocnemis\RegionImport\Model\Handler\AppendHandler\Proxy</item>
+                <item name="delete" xsi:type="object">Eriocnemis\RegionImport\Model\Handler\DeleteHandler\Proxy</item>
+                <item name="replace" xsi:type="object">Eriocnemis\RegionImport\Model\Handler\ReplaceHandler\Proxy</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <type name="Eriocnemis\RegionImport\Model\Region">
+        <arguments>
+            <argument name="validatorPool" xsi:type="object">EriocnemisRegionImportValidatorPool</argument>
+            <argument name="handlerPool" xsi:type="object">EriocnemisRegionImportHandlerPool</argument>
+        </arguments>
+    </type>
+    <type name="Magento\ImportExport\Model\Import\SampleFileProvider">
+        <arguments>
+            <argument name="samples" xsi:type="array">
+                <item name="eriocnemis_region" xsi:type="string">Eriocnemis_RegionImport</item>
+            </argument>
+        </arguments>
+    </type>
+</config>
