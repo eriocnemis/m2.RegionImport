@@ -35,4 +35,3 @@ If you encounter any problems or bugs, please open a [issue](https://github.com/
 Also note that the issue tracker is not a support forum. If you have questions about how to use the extension, or how to get extension to work, please visit stackoverflow.com.
 
 <p align="center"><img src="https://avatars3.githubusercontent.com/u/48807026?s=48&v=4"></p>
-

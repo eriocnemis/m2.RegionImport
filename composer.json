@@ -3,10 +3,12 @@
     "description": "The extension allows admin to import regions.",
     "type": "magento2-module",
     "version": "2.4.1",
-    "authors": [{
-        "name": "Eriocnemis Team",
-        "email": "dev.eriocnemis@gmail.com"
-    }],
+    "authors": [
+        {
+            "name": "Eriocnemis Team",
+            "email": "dev.eriocnemis@gmail.com"
+        }
+    ],
     "license": [
         "OSL-3.0"
     ],
@@ -18,10 +20,10 @@
     },
     "autoload": {
         "files": [
-            "registration.php"
+            "src/registration.php"
         ],
         "psr-4": {
-            "Eriocnemis\\RegionImport\\": ""
+            "Eriocnemis\\RegionImport\\": "src"
         }
     }
 }

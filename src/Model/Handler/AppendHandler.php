@@ -73,7 +73,7 @@ class AppendHandler implements HandlerInterface
         } else {
             $this->importResult->addUpdatedItem();
         }
-        $this->saveLabel->execute($rowData, $regionId);
+        $this->saveLabel->execute($rowData, (int)$regionId);
     }
 
     /**
