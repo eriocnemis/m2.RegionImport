@@ -63,6 +63,7 @@ class AppendHandler implements HandlerInterface
      *
      * @param mixed[] $rowData
      * @return void
+     * @SuppressWarnings(PHPMD.ElseExpression)
      */
     public function execute(array $rowData)
     {

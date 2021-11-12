@@ -56,6 +56,7 @@ class CountryValidator implements ValidatorInterface
      *
      * @param mixed[] $rowData
      * @return ValidationResult
+     * @SuppressWarnings(PHPMD.ElseExpression)
      */
     public function validate(array $rowData): ValidationResult
     {
