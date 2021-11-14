@@ -2,7 +2,7 @@
     "name": "eriocnemis/module-region-import",
     "description": "The extension allows admin to import regions.",
     "type": "magento2-module",
-    "version": "2.4.2",
+    "version": "2.3.2",
     "authors": [
         {
             "name": "Eriocnemis Team",
@@ -13,10 +13,11 @@
         "OSL-3.0"
     ],
     "require": {
-        "magento/framework": "103.0.*",
-        "magento/module-import-export": "101.0.*",
-        "magento/module-directory": "100.4.*",
-        "eriocnemis/module-region-api": "2.4.2"
+        "php": "~7.1.3||~7.2.0||~7.3.0",
+        "magento/framework": "102.0.*",
+        "magento/module-import-export": "100.3.*",
+        "magento/module-directory": "100.3.*",
+        "eriocnemis/module-region-api": "2.3.2"
     },
     "autoload": {
         "files": [
